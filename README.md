@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏛️ The Black History Foundation - Artifact Preservation Platform
 
-## Getting Started
+A decentralized platform for preserving and verifying Black history artifacts using blockchain and IPFS technology.
 
-First, run the development server:
+## ✨ Features
+
+- 📤 Upload historical artifacts (images, videos, PDFs)
+- 🔐 Wallet-based authentication (email or crypto)
+- 🎨 Dual NFT system (Initial + Verified badges)
+- 👥 Manager approval workflow
+- 🖼️ Public artifact gallery
+- ⛓️ Ethereum Sepolia testnet
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- Sepolia ETH for testing
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Environment Setup
+Create .env.local in the root directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Pinata IPFS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+PINATA_API_KEY=your_pinata_api_key
+PINATA_SECRET_KEY=your_pinata_secret_key
+```
 
-## Learn More
+# Sepolia RPC (optional)
 
-To learn more about Next.js, take a look at the following resources:
+```
+SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Contract (already deployed)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x69f2df237716d86386d38b219e7b1a70b3ed2527
+```
 
-## Deploy on Vercel
+# Treasury address
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+NEXT_PUBLIC_TREASURY_ADDRESS=your_wallet_address
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run Development Server
+
+```
+pnpm dev
+```
+
+Open http://localhost:3000
+
+📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx              # Upload page
+│   ├── artifacts/            # Gallery page
+│   ├── administrative/       # Admin dashboard
+│   └── api/upload-ipfs/      # IPFS upload endpoint
+├── components/
+│   └── Navigation.tsx        # Nav & footer
+└── context/
+    ├── appkit.tsx           # Wallet config
+    └── deployedContracts.ts # Contract ABI
+```
+
+🔑 Getting API Keys
+Pinata (IPFS Storage)
+
+Sign up at pinata.cloud
+Go to API Keys
+Create new key with pinFileToIPFS permission
+Copy API Key and Secret to .env.local
+
+Sepolia Test ETH
+Get free test ETH: sepoliafaucet.com
+🛠️ Tech Stack
+
+Next.js 14 (App Router)
+TypeScript
+Tailwind CSS
+Ethers.js v6
+Reown AppKit
+IPFS (Pinata)
+Solidity 0.8.20
+
+📜 Smart Contract
+Deployed on Sepolia: 0x69f2df237716d86386d38b219e7b1a70b3ed2527
+Features:
+
+Submit artifacts (0.001 ETH fee)
+Dual NFT minting
+Manager-based approval system
+On-chain rejection reasons
+
+🎯 User Flow
+
+Upload: Connect wallet → Upload file → Pay 0.001 ETH → Receive Initial NFT
+Review: Managers review submissions
+Verify: Approved artifacts receive Verified NFT badge
+
+🔒 Admin Access
+To become a manager, the contract owner must call addManager(yourAddress) from the deployer wallet.
+📝 License
+501(c)(3) Non-Profit Organization
+🤝 Contributing
+This is a hackathon MVP. For production deployment, contact The Black History Foundation at tbhn.org
+
+Built with ❤️ for preserving history
